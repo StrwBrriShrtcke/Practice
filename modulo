@@ -1,1 +1,36 @@
+function abs(c) {
+    return c > 0
+    ? c
+    : -c;
+}
 
+function div(a, b) {
+    return a === 0 || b === 0
+    ? 'divide by zero error'
+    : b > a && a > 0
+    ? 0
+    : abs(a) < b
+    ? 0
+    : a < 0
+    ? -(1 + div(-a - b, b))
+    : b < 0
+    ? div(-a, -b)
+    :1 + div(a-b, b);
+}
+
+function mod(x, y) {
+    return x === 0 || y === 0
+    ? 0
+    : x - (div(x, y) * y);
+}
+
+display(mod(16, 3));
+display(mod(-16, 3));
+display(mod(16, -3));
+display(mod(-16, -3));
+display(mod(2, 3));
+display(mod(2, -3));
+display(mod(-2, 3));
+display(mod(-2, -3));
+display(mod(0, 3));
+display(mod(3, 0));
