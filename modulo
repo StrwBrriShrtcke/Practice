@@ -51,19 +51,26 @@ function abs(c) {
 // }
 
 
+// function mod(a, b) {
+//     return b === 0
+//     ? 'error'
+//     : abs(b) > abs(a) || (abs(b) > abs(a))
+//     ? a
+//     : a < 0 && b > 0
+//     ? - ((mod(a+b, b)))
+//     : b < 0
+//     ? mod(a, -b)
+//     : a < 0 && b < 0
+//     ?- ((mod(a-b, b)))
+//     : mod(a-b, b);
+// }
+
 function mod(a, b) {
-    return b === 0
-    ? 'error'
-    : abs(b) > abs(a) || (abs(b) > abs(a))
-    ? a
-    : a < 0 && b > 0
-    ? - ((mod(a+b, b)))
-    : b < 0
-    ? mod(a, -b)
-    : a < 0 && b < 0
-    ?- ((mod(a-b, b)))
-    : mod(a-b, b);
+    return abs(b) > abs(a) || (abs(b) > abs(a))
+     ? a
+     : 
 }
+    
 
  display(mod(13, 5));   // 3
  display(mod(13, -5));  // 3
