@@ -57,11 +57,11 @@ function mod(a, b) {
     : abs(b) > abs(a) || (abs(b) > abs(a))
     ? a
     : a < 0 && b > 0
-    ? - (1 + (mod(a+b, b) -1))
+    ? - ((mod(a+b, b)))
     : b < 0
     ? mod(a, -b)
     : a < 0 && b < 0
-    ?- (1 + (mod(a-b, b) -1))
+    ?- ((mod(a-b, b)))
     : 1 + (mod(a-b, b) -1);
 }
 
