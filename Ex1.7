@@ -7,26 +7,31 @@ function square(x) {
 }
 
 function relativeTolerance(x) {
-    return x * 0.001;
+    return fraction_of_guess < 0.001;
 }
+const change_of_guess = abs(new_guess - old_guess);
+const fraction_of_guess = change_of_guess / old_guess;
 
-function is_good_enough(guess, x) {
-    return abs(square(guess) - x) < relativeTolerance(x);
+function is_good_enough(new_guess, x) {
+    return abs(change_of_guess) < relativeTolerance;
 }
 
 function average(x, y) {
     return (x + y) / 2;
 }
 
-function improve(guess, x) {
-    return average(guess, x / guess);
+function improve(new_guess, x) {
+    return average(new_guess, x / new_guess);
 }
 
-function sqrt_iter(guess, x) {
-    return is_good_enough(guess, x)
-          ? guess
-          : sqrt_iter(improve(guess, x), x);
+function sqrt_iter(new_guess, x) {
+    return is_good_enough(old_guess, x)
+          ? old_guess
+          : sqrt_iter(improve(new_guess, x), x);
 }
+const old_guess = 2;
+sqrt_iter(2, 16);
+
 
 // is_good_enough is not effective for finding the square roots of very 
 // small numbers because its condition is satisfied once the difference 
@@ -35,10 +40,10 @@ function sqrt_iter(guess, x) {
 // is_good_enough condition and be computed as the square root of the 
 // radicand despite being inaccurate.
 
-// display(sqrt_iter(0.001, 0.0002)); //0.001
-// display(sqrt_iter(0.01, 0.0002)); //0.01
-// display(sqrt_iter(0.02, 0.0002)); //0.02
-// display(sqrt_iter(0.03, 0.0002)); //0.03
+// display(sqrt_iter(0.001, 0.0002)); //0.01414...
+// display(sqrt_iter(0.01, 0.0004)); //0.002
+// display(sqrt_iter(0.02, 0.003)); //0.05477...
+// display(sqrt_iter(0.03, 0.002)); // 0.14142
 
 // when trying to find the sqrt of 0.0002, the above function computes the
 // answer as the guess as the final answer as the difference between the
@@ -47,5 +52,5 @@ function sqrt_iter(guess, x) {
 // of very small numbers.
 
 
-display(sqrt_iter(10, 23423452345678906789056789));
+// display(sqrt_iter(2, 16));
 
