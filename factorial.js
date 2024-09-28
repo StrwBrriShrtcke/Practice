@@ -20,10 +20,10 @@
 
 
 function triangle(n) {
-    function  triangle_iter(product, counter) {
+    function  triangle_iter(N, counter) {
         return counter > n
-             ? product
-             : triangle_iter(product + counter,
+             ? N
+             : triangle_iter(N + counter,
                           counter + 1);
     }
      return triangle_iter(0, 1);
