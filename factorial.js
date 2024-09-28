@@ -21,3 +21,8 @@ display(factorial(5));
 // }
 
 // display(triangle(3));
+
+
+function triangle(n) {
+    return 
+}
