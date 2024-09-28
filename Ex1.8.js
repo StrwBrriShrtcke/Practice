@@ -8,7 +8,7 @@ function is_good_enough(guess, newGuess) {
 }
 
 function improvedCube(guess, x) {
-    return ((x / (guess * guess) + (guess * 2))) / 3;
+    return (x / (guess * guess) + (guess * 2)) / 3;
 }
 
 function cube_iter(guess, x) {
