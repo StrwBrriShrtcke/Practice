@@ -18,9 +18,12 @@ function cube_iter(guess, x) {
           : cube_iter(newGuess, x);
 }
 
+function cube(x) {
+    return cube_iter(1, x);
+}
 
-display(cube_iter(1, 8)); // 2
-display(cube_iter(1, 27)); // 3
-display(cube_iter(1, 64)); // 4
-display(cube_iter(1, 125)); // 5
-display(cube_iter(4, 4096)); // 16
+display(cube(8)); // 2
+display(cube(27)); // 3
+display(cube(64)); // 4
+display(cube(125)); // 5
+display(cube(4096)); // 16
