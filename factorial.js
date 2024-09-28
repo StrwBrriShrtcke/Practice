@@ -20,14 +20,13 @@
 
 
 function triangle(n) {
-    function  triangle_iter(product, counter, max_count) {
-        return counter > max_count
+    function  triangle_iter(product, counter) {
+        return counter > n
              ? product
              : triangle_iter(product + counter,
-                          counter + 1,
-                          max_count);
+                          counter + 1);
     }
-     return triangle_iter(0, 1, n);
+     return triangle_iter(0, 1);
 }
 triangle(9);
                        
