@@ -1,10 +1,13 @@
 function pyramid(n) {
-    function pyramid_inter(product, counter) {
+    function pyramid_inter(sum, counter) {
         return counter > n
-        ? product
-        :pyramid_inter((product * product + counter), counter + 1);
+        ? sum
+        :pyramid_inter((counter * counter + sum), counter + 1);
     }
-    return pyramid_inter(1, 1);
+    return pyramid_inter(0, 1);
 }
 
-pyramid(3);
+display(pyramid(5)); //55
+display(pyramid(7)); //140
+display(pyramid(8)); //204
+display(pyramid(9)); //285
