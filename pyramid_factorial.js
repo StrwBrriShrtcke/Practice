@@ -2,7 +2,7 @@ function pyramid(n) {
     function pyramid_inter(sum, counter) {
         return counter > n
         ? sum
-        :pyramid_inter((counter * counter + sum), counter + 1);
+        :pyramid_inter(counter * counter + sum, counter + 1);
     }
     return pyramid_inter(0, 1);
 }
