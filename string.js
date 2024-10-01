@@ -24,17 +24,17 @@ function length2(s) {
 
 function trueLength(s) {
     const lowerbound = length2(s) - 10;
-        return is_undefined(char_at(s, lowerbound)
-        ? lowerbound
-        : trueLength(lowerbound + 1);
+    return is_undefined(char_at(s, lowerbound))
+    ? lowerbound
+    : trueLength(lowerbound + 1);
 }
 
 // display(length2("hello"));
 // display(length("cat"));
 // display(length("unicorn"));
 // display(length(""));
-// display(length(""));
-display(trueLength("Lorem ipsum odor amet, consectetuer adipiscing elit. Commodo habitant vitae condimentum nisl nisi diam ornare. Litora in ex sodales hendrerit quis finibus maecenas dignissim. Gravida ad vel tempus vestibulum curabitur sollicitudin. Iaculis aliquam congue interdum ullamcorper mi massa inceptos. Amet egestas a, risus ultrices torquent himenaeos.Ad habitant porta finibus a praesent libero ullamcorper senectus. Litora nibh suspendisse aliquet hac parturient nec. Egestas nisi sollicitudin semper ipsum eget magna facilisis dignissim justo. Natoque velit sodales dolor donec a porta aliquet lacus. Venenatis nibh maecenas posuere pulvinar vestibulum dignissim purus. Pretium ullamcorper lectus fermentum nam justo, quam etiam nibh. Scelerisque curabitur ultricies ipsum sagittis viverra."));
+display(trueLength("asdasdfghjklfghjkl")); //18
+// display(length2("Lorem ipsum odor amet, consectetuer adipiscing elit. Commodo habitant vitae condimentum nisl nisi diam ornare. Litora in ex sodales hendrerit quis finibus maecenas dignissim. Gravida ad vel tempus vestibulum curabitur sollicitudin. Iaculis aliquam congue interdum ullamcorper mi massa inceptos. Amet egestas a, risus ultrices torquent himenaeos.Ad habitant porta finibus a praesent libero ullamcorper senectus. Litora nibh suspendisse aliquet hac parturient nec. Egestas nisi sollicitudin semper ipsum eget magna facilisis dignissim justo. Natoque velit sodales dolor donec a porta aliquet lacus. Venenatis nibh maecenas posuere pulvinar vestibulum dignissim purus. Pretium ullamcorper lectus fermentum nam justo, quam etiam nibh. Scelerisque curabitur ultricies ipsum sagittis viverra."));
 
 
 // function factorial(n) {
