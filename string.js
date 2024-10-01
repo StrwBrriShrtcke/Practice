@@ -19,18 +19,14 @@ function length2(s) {
         ? counter 
         : iter(counter + 10);
     }
-    function lowerbound_iter(counter) {
-        return is_undefined(lowerbound)
-        ?lowerbound
-    }
     return iter(0);
 }
 
 function trueLength(s) {
     const lowerbound = length2(s) - 10;
-        return is_undefined(lowerbound)
+        return is_undefined(char_at(s, lowerbound)
         ? lowerbound
-        : lowerbound_iter(sum + 1);
+        : trueLength(lowerbound + 1);
 }
 
 // display(length2("hello"));
