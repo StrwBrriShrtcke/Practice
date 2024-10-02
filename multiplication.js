@@ -94,22 +94,46 @@
 
 
 
-function mult(a, b){
-    return b===0
-    ? 0
-    : a < 0 && b > 0
-    ? a + mult(a, b- 1)
-    : a < 0 && b < 0
-    ? - a + mult(-a, -b-1)
-    : b + mult(b, a - 1);
+// function mult(a, b){
+//     return b===0
+//     ? 0
+//     : a < 0 && b > 0
+//     ? a + mult(a, b- 1)
+//     : a < 0 && b < 0
+//     ? - a + mult(-a, -b-1)
+//     : b + mult(b, a - 1);
+// }
+// mult(-3,-4);
+
+// function mul(a, b) {
+//     function iter_mul(sum, counter) {
+//         return counter > math_abs(b)
+//         ? sum
+//         : b < 0
+//         ? iter_mul(sum - a, counter + 1)
+//         : iter_mul(sum + a, counter + 1);
+//     }
+//     return iter_mul(0, 1);
+    
+// }
+
+
+function mul2(a, b) {
+    function iter_mul(sum, counter) {
+        return counter > math_abs(b)
+        ? sum
+        : iter_mul(sum + a, counter + 1);
+    }
+    return b < 0 ? - iter_mul(0, 1) : iter_mul(0, 1);
+    
 }
-mult(-3,-4);
 
-
-
-
-
-
+display(mul2(2, 4));
+display(mul2(-2, 4));
+display(mul2(2, -4));
+display(mul2(-2, -4));
+display(mul2(0, -4));
+display(mul2(-2, 0));
 
 
 
