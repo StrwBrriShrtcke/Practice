@@ -56,17 +56,17 @@ function abs(x) {
 function div2(a, b) {
     const absB = math_abs(b);
     function iter(remainder, counter) {
-        return math_abs(remainder)< absB
+        return remainder < absB
         ? counter 
-        : iter(math_abs(remainder) - absB, counter + 1);
+        : iter(remainder - absB, counter + 1);
         
     }
     return b === 0 
     ? error(b, "number cannnot be divided by") 
     : a < 0 && b < 0 
-    ? iter(a, 0) 
+    ? iter(math_abs(a), 0) 
     : b < 0 ? -(iter(a, 0)) : a < 0 
-    ? -(iter(a, 0)) : iter(a, 0);
+    ? -(iter(math_abs(a), 0)) : iter(a, 0);
 }
 
 display(div2(16, 3)); //5
