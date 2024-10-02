@@ -31,8 +31,11 @@ function length2(s) {
     }
     
     // return iter1(math_max(0, iter10(0) - 10));
-    
-    return iter(math_max(0, iter(0, 10) - 10), 1);
+    const lower_bound = iter(0, 10) - 10;
+    const non_neg_lower_bound = math_max(0, lower_bound);
+    // return iter(math_max(0, iter(0, 10) - 10), 1);
+    return iter(lower_bound);
+ 
 
     // function iter1(counter) {
     //     const lowerbound = iter10(counter);
@@ -42,8 +45,16 @@ function length2(s) {
     // }
     
 }
-
-
+function max(a, b) {
+    return a < b
+    ? b
+    : a;
+}
+function min(a, b) {
+    return a > b
+    ? b
+    : a;
+}
 
 // display(length2("hello"));
 // display(length("cat"));
