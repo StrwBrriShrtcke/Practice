@@ -55,7 +55,6 @@ function abs(x) {
 
 function div2(a, b) {
     const absB = math_abs(b);
-    const remainder = 
     function iter(remainder, counter) {
         return math_abs(remainder)< absB
         ? counter 
