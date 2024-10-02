@@ -15,8 +15,8 @@
 // display('\n');
 // display(eitherOr(true, true)); // false
 // display(eitherOr(false, false)); // false
-    
-    
+
+
 //     function isHeteroCouple(gender1, gender2) {
 //     return gender1 !== gender2;
 // }
@@ -85,11 +85,11 @@
 // // a*b + a*c === a*(b+c)
 
 //function  isLeapYear(year){
-    //return year % 400 === 0 || 
-    //(year % 100 !== 0 && year % 4 === 0);
+//return year % 400 === 0 || 
+//(year % 100 !== 0 && year % 4 === 0);
 //
 //function div(a, b){
-    //
+//
 //
 
 
@@ -114,18 +114,19 @@
 //         : iter_mul(sum + a, counter + 1);
 //     }
 //     return iter_mul(0, 1);
-    
+
 // }
 
 
 function mul2(a, b) {
+    const absoluteB = math_abs(b);
     function iter_mul(sum, counter) {
-        return counter > math_abs(b)
-        ? sum
-        : iter_mul(sum + a, counter + 1);
+        return counter > absoluteB
+            ? sum
+            : iter_mul(sum + a, counter + 1);
     }
     return b < 0 ? - iter_mul(0, 1) : iter_mul(0, 1);
-    
+
 }
 
 display(mul2(2, 4));
@@ -140,4 +141,3 @@ display(mul2(-2, 0));
 
 
 
-      
