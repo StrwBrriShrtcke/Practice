@@ -4,7 +4,7 @@ function duplicate_string(s, n) {
         ? r
         :iter(r + s, counter + 1);
     }
-    return n === 0 ? "" : iter(s, 1);
+    return iter("", 0);
 }
 
 display(duplicate_string("a", 5));
