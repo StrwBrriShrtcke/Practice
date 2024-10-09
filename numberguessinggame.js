@@ -9,7 +9,8 @@ function two_digit() {
 function test_two_digit() {
     function test(counter) {
         const n = two_digit();
-        return counter === 0
+        display(stringify(n) + " | " + stringify(counter));
+        return counter === 1
         ? true
         : n < 10  || n >= 100 
         ? false
