@@ -15,11 +15,14 @@
 
 
 function iterative_function(n) {
-    function iter(n) {
-        return iter(n - 1) + 2 * iter(n - 2) 
-    + 3 * iter(n - 3);
+    function iter(a, b, c, counter) {
+        //  display("a:" + stringify(a) + " b:" + stringify(b) + " c:" + stringify(c) 
+        //  + " counter:" + stringify(counter));
+        return counter < 1
+        ? c
+        : iter(a + 2 * b + 3 * c, a, b, counter - 1);
     }
-    return n < 3 ? n : iter(n);
+    return iter(2, 1, 0, n);
 }
 
 display(iterative_function(0)); //0
