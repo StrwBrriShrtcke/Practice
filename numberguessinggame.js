@@ -6,7 +6,7 @@ function two_digit() {
     return math_floor(math_random() * 89) + 10;
 }
 
-function test_two_digit() {
+function test_two_digit(counter) {
     function test(counter) {
         const n = two_digit();
         display(stringify(n) + " | " + stringify(counter));
@@ -16,6 +16,6 @@ function test_two_digit() {
         ? false
         : test(counter - 1);
     }
-    return test(1000);
+    return test(counter);
 }
-test_two_digit();
+test_two_digit(2000);
