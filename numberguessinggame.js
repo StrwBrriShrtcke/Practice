@@ -34,10 +34,13 @@
 // test_two_digit(2000);
 
 
+function give_prompt(n) {
+    return parse_int(prompt(n), 10);
+}
 
 function answer() {
     function convert_to_number() {
-    return parse_int(prompt("Choose a positive integer!"), 10);
+    return give_prompt("Choose a positive integer!");
 }
   return math_floor(math_random() * convert_to_number()) + 1;
 }
@@ -45,17 +48,20 @@ function answer() {
 const a = answer();
 
 function guess() {
-    return parse_int(prompt("Take a guess!"), 10);
+    return give_prompt("Take a guess!");
 }
 const g = guess();
 function check(g) {
     return a === g
     ? display("Congratulations you win!")
     : g < a
-    ? check(parse_int(prompt("Oh no! That's a little bit too low, try again."), 10))
-    : check(parse_int(prompt("Oh no! That's a little bit too high, try again."), 10));
+    ? check(give_prompt("Oh no! That's a little bit too low, try again."))
+    : check(give_prompt("Oh no! That's a little bit too high, try again."));
 }
 check(g);
+
+
+
 
 // function test_onetoten(counter) {
 //     function test(counter) {
