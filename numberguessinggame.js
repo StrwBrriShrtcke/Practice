@@ -34,34 +34,57 @@
 // test_two_digit(2000);
 
 
-function give_prompt(n) {
-    return parse_int(prompt(n), 10);
+// function give_prompt(n) {
+//     return parse_int(prompt(n), 10);
+// }
+
+// function answer() {
+//     function convert_to_number() {
+//         return give_prompt("Choose a positive integer!");
+//     }
+//     return math_floor(math_random() * convert_to_number()) + 1;
+// }
+
+// const a = answer();
+
+// function guess() {
+//     return give_prompt("Take a guess!");
+// }
+// const g = guess();
+// function check(g) {
+//     return a === g
+//     ? display("Congratulations you win!")
+//     : g < a
+//     ? check(give_prompt("Oh no! That's a little bit too low, try again."))
+//     : check(give_prompt("Oh no! That's a little bit too high, try again."));
+// }
+// check(g);
+
+function start_game() {
+    function give_prompt(n) {
+        return parse_int(prompt(n), 10);
+    }
+    
+    function get_upper_bound() {
+        const start = give_prompt("Choose a positive integer!");
+        return math_floor(math_random() * start) + 1;
+    }
+    
+    const upper_bound = get_upper_bound();
+    
+    const first_guess = give_prompt("Take a guess!");
+    
+    function check(guess, counter) {
+        return upper_bound === guess
+        ? display("Congratulations you win! You took " + stringify(counter) + " tries")
+        : guess < upper_bound
+        ? check(give_prompt("Oh no! That's a little bit too LOW, try again."), counter + 1)
+        : check(give_prompt("Oh no! That's a little bit too HIGH, try again."), counter + 1);
+    }
+    check(first_guess, 1);
 }
 
-function answer() {
-    function convert_to_number() {
-    return give_prompt("Choose a positive integer!");
-}
-  return math_floor(math_random() * convert_to_number()) + 1;
-}
-
-const a = answer();
-
-function guess() {
-    return give_prompt("Take a guess!");
-}
-const g = guess();
-function check(g) {
-    return a === g
-    ? display("Congratulations you win!")
-    : g < a
-    ? check(give_prompt("Oh no! That's a little bit too low, try again."))
-    : check(give_prompt("Oh no! That's a little bit too high, try again."));
-}
-check(g);
-
-
-
+start_game();
 
 // function test_onetoten(counter) {
 //     function test(counter) {
