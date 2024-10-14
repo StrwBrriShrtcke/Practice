@@ -5,10 +5,11 @@ function fib(n) {
 }
 
 const sqrt_of_5 = math_sqrt(5);
+const phi = (1 + sqrt_of_5) / 2;
 
 function prove(n) {
     return fib(n) === 
-    math_round(math_pow(((1 + sqrt_of_5) / 2), n) / sqrt_of_5);
+    math_round(math_pow(phi, n) / sqrt_of_5);
 }
 
 prove(9);
