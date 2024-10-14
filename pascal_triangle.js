@@ -1,7 +1,7 @@
 function pascal_triangle(row, column) {
         return column === row || column === 1 || row <= 2
         ? 1
-        : column > row
+        : column > row || column < 1 || row < 1
         ? "out of bounds"
         : pascal_triangle(row - 1, column) +  pascal_triangle(row - 1, column - 1);
 }
