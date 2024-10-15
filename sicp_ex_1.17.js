@@ -1,5 +1,3 @@
-// function fast_mult(a, b) {
-
 function sum(x) {
     return x + x;
 }
