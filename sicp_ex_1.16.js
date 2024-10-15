@@ -1,16 +1,26 @@
+function square(x) {
+    return x * x;
+}
+
 function is_even(n) {
     return n % 2 === 0;
 }
 
 function expn_iter(b, n) {
     function iter(a, b, n) {
-        return n === 1
+        return n === 0
         ? a
         : is_even(n)
-        ? iter(b * b, a, n / 2)
-        : a * iter(b * b, a, n - 1);
+        ? iter(a, square(b), n / 2) 
+        : a * b * (iter(a, b, n - 1)); 
     }
     return iter(1, b, n);
 }
 
-expn_iter(4, 3);
+display(expn_iter(3, 10)); //59049
+display(expn_iter(10, 3));//1000
+display(expn_iter(3, 3));//1000
+display(expn_iter(10, 0)); // 1
+display(expn_iter(0, 10)); //0
+
+
