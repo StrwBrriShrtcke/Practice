@@ -49,19 +49,38 @@ function report_prime(elapsed_time) {
 
 //Funciton that tests for a range of numbers
 function search_for_prime(start) {
-    function first_three_prime(sequence, counter, is_true) {
+    function first_three_prime(prime_number, counter, test_number) {
         return counter === 3
-        ? sequence
-        : is_prime(is_true) && counter <= 1
-        ? first_three_prime(sequence + stringify(is_true) + " ", 
-        counter + 1, is_true + 2)
-        : is_prime(is_true) && counter > 1
-        ? first_three_prime(sequence + stringify(is_true), 
-        counter + 1, is_true + 2)
-        : first_three_prime(sequence,counter, is_true + 2);
+        ? prime_number
+        : is_prime(test_number) && counter <= 1
+        ? first_three_prime(prime_number + stringify(test_number) + " ", 
+        counter + 1, test_number + 2)
+        : is_prime(test_number) && counter > 1
+        ? first_three_prime(prime_number + stringify(test_number), 
+        counter + 1, test_number + 2)
+        : first_three_prime(prime_number,counter, test_number + 2);
     }
     return first_three_prime("", 0, is_odd(start));
 }
-search_for_prime(1008);
+display(search_for_prime(1000));//1009, 1013, 1019
+display(search_for_prime(10000));//10007, 10009, 10037
+display(search_for_prime(100000));//100003, 1000019, 1000037
+display(search_for_prime(1000000));//1000003, 1000033, 1000037
+
+function time_function(f) {
+    const start_time = get_time();
+    f();
+    return get_time() - start_time;
+}
+// display(time_function(() => search_for_prime(1000))); //5
+// display(time_function(() => search_for_prime(10000))); //7
+
+function is_order_of_growth_log(first, second) {
+    return time_function(() => search_for_prime(first)) * math_sqrt(10) ===
+    time_function(() => search_for_prime(second));
+}
+
+is_order_of_growth_log(1000, 10000);
+
 
 
