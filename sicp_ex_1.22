@@ -34,6 +34,12 @@ function start_prime_test(n, start_time) {
           : false;
 }
 
+function is_odd(n) {
+    return n % 2 === 0
+    ? n + 1
+    : n;
+}
+
 function report_prime(elapsed_time) {
     display(" *** ");
     display(elapsed_time);
@@ -42,26 +48,20 @@ function report_prime(elapsed_time) {
 
 
 //Funciton that tests for a range of numbers
-function range_of_function(func, start, end) {
-    function iter(sequence, counter) {
-        return counter >= end
-        ? sequence
-        : counter % 2 === 0 
-        ? iter(sequence + stringify(func(counter + 1)), counter + 2)
-        : iter(sequence + " " + stringify(func(counter)), counter + 1);
-    }
-    return iter("", start);
-}
-
-function three_smallest_prime(func, start, end) {
-    function iter(sequence, counter) {
+function search_for_prime(start) {
+    function first_three_prime(sequence, counter, is_true) {
         return counter === 3
         ? sequence
-        : timed_prime_test(counter) === true
-        ? iter(sequence + stringify(func(counter + 1)), counter + 1)
-        : "";
+        : is_prime(is_true) && counter <= 1
+        ? first_three_prime(sequence + stringify(is_true) + " ", 
+        counter + 1, is_true + 2)
+        : is_prime(is_true) && counter > 1
+        ? first_three_prime(sequence + stringify(is_true), 
+        counter + 1, is_true + 2)
+        : first_three_prime(sequence,counter, is_true + 2);
     }
-    return iter("", start);
+    return first_three_prime("", 0, is_odd(start));
 }
+search_for_prime(1008);
 
-three_smallest_prime(range_of_function, 1000, 1100);
+
