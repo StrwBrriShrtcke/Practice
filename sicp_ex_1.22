@@ -34,7 +34,7 @@ function start_prime_test(n, start_time) {
           : false;
 }
 
-function is_odd(n) {
+function next_odd(n) {
     return n % 2 === 0
     ? n + 1
     : n;
@@ -60,27 +60,40 @@ function search_for_prime(start) {
         counter + 1, test_number + 2)
         : first_three_prime(prime_number,counter, test_number + 2);
     }
-    return first_three_prime("", 0, is_odd(start));
+    return first_three_prime("", 0, next_odd(start));
 }
-display(search_for_prime(1000));//1009, 1013, 1019
-display(search_for_prime(10000));//10007, 10009, 10037
-display(search_for_prime(100000));//100003, 1000019, 1000037
-display(search_for_prime(1000000));//1000003, 1000033, 1000037
+// display(search_for_prime(1000));//1009, 1013, 1019
+// display(search_for_prime(10000));//10007, 10009, 10037
+// display(search_for_prime(100000));//100003, 1000019, 1000037
+// display(search_for_prime(1000000));//1000003, 1000033, 1000037
 
 function time_function(f) {
     const start_time = get_time();
     f();
     return get_time() - start_time;
 }
-// display(time_function(() => search_for_prime(1000))); //5
-// display(time_function(() => search_for_prime(10000))); //7
+// display(time_function(() => search_for_prime(100000))); //4
+// display(time_function(() => search_for_prime(1000000))); //9
+
+// function is_order_of_growth_log(first, second) {
+//     return time_function(() => search_for_prime(first)) * math_sqrt(10) ===
+//     time_function(() => search_for_prime(second));
+// }
 
 function is_order_of_growth_log(first, second) {
-    return time_function(() => search_for_prime(first)) * math_sqrt(10) ===
-    time_function(() => search_for_prime(second));
+    const first_number = time_function(() => search_for_prime(first));
+    const second_number = time_function(() => search_for_prime(second));
+    return math_floor(math_abs(100 - ((first_number * math_sqrt(10) - 
+    second_number) / second_number * 100)));
 }
 
-is_order_of_growth_log(1000, 10000);
+// function is_order_of_growth_log(first, second) {
+//     const first_number = first;
+//     const second_number = second;
+//     return math_floor(math_abs(100 - ((first_number * math_sqrt(10) - second_number) / second_number * 100)));
+// }
+
+is_order_of_growth_log(100000, 1000000);
 
 
 
