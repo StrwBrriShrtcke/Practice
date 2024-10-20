@@ -68,7 +68,7 @@ return first_three_prime("", 0, next_odd(start));
 
 // display(search_for_prime(1000, 2000));//1009, 1013, 1019
 // display(search_for_prime(10000, 20000));//10007, 10009, 10037
-// display(search_for_prime(100000, 200000));//100003, 1000019, 1000037
+ display(search_for_prime(100000, 200000));//100003, 100019, 100037
 // display(search_for_prime(1000000, 2000000));//1000003, 1000033, 1000037
 // display(search_for_prime(100, 105));//" 101, 103"
 
