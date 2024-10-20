@@ -37,5 +37,18 @@ function fast_is_prime(n, times) {
 
 function timed_prime_test(n) {
     display(n);
-    return (n, get_time());
+    return fast_is_prime(n, get_time());
 }
+
+display(timed_prime_test(1009));
+display(timed_prime_test(1013));
+display(timed_prime_test(1019));
+display(timed_prime_test(10007));
+display(timed_prime_test(10009));
+display(timed_prime_test(10037));
+display(timed_prime_test(100003));
+display(timed_prime_test(100019));
+display(timed_prime_test(100043));
+display(timed_prime_test(1000003));
+display(timed_prime_test(1000033));
+display(timed_prime_test(1000037));
