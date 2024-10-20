@@ -46,35 +46,34 @@ function report_prime(elapsed_time) {
     return true;
 }
 
+
+
 // Function for searching for the first 3 prime 
 // numbers in a range of numbers
 function search_for_prime(start, end) {
-    function first_three_prime(prime_number, counter, test_number) {
-        if (counter === 3 || test_number > end) {
-            return prime_number;
-        } else {
-             const prime_true = is_prime(test_number);
-             return prime_true && counter <= 1
-             ? first_three_prime(prime_number + stringify(test_number) + " ", 
-               counter + 1, test_number + 2)
-             : prime_true && counter > 1
-             ? first_three_prime(prime_number + stringify(test_number), 
-               counter + 1, test_number + 2)
-             : first_three_prime(prime_number,counter, test_number + 2);
-        }
-}
-return first_three_prime("", 0, next_odd(start));
+    function first_three_prime(primes, counter, test_number) {
+        return counter === 3 || test_number > end 
+        ? primes
+        : is_prime(test_number)
+        ? first_three_prime(counter <= 1
+            ? primes + stringify(test_number) + " " 
+            : primes + stringify(test_number), 
+              counter + 1, test_number + 2)
+        : first_three_prime(primes,counter, test_number + 2);
+    }
+    return first_three_prime("", 0, next_odd(start));
 }
 
-// display(search_for_prime(1000, 2000));//1009, 1013, 1019
-// display(search_for_prime(10000, 20000));//10007, 10009, 10037
- display(search_for_prime(100000, 200000));//100003, 100019, 100043
-// display(search_for_prime(1000000, 2000000));//1000003, 1000033, 1000037
-// display(search_for_prime(100, 105));//" 101, 103"
+
+display(search_for_prime(1000, 2000));//1009, 1013, 1019
+display(search_for_prime(10000, 20000));//10007, 10009, 10037
+display(search_for_prime(100000, 200000));//100003, 100019, 100043
+display(search_for_prime(1000000, 2000000));//1000003, 1000033, 1000037
+display(search_for_prime(100, 105));//" 101, 103"
 
 // Function that calculates time taken to execute another function
 function time_function(f) {
-    const start_time = get_time();
+    const start_time = get_time()
     f();
     return get_time() - start_time;
 }
