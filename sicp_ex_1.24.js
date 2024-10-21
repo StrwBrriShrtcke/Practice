@@ -35,20 +35,36 @@ function fast_is_prime(n, times) {
            : false;
 }
 
-function timed_prime_test(n) {
+function timed_prime_test(n, times) {
     display(n);
-    return fast_is_prime(n, get_time());
+    return start_prime_test(n, times, get_time());
 }
 
-display(timed_prime_test(1009));
-display(timed_prime_test(1013));
-display(timed_prime_test(1019));
-display(timed_prime_test(10007));
-display(timed_prime_test(10009));
-display(timed_prime_test(10037));
-display(timed_prime_test(100003));
-display(timed_prime_test(100019));
-display(timed_prime_test(100043));
-display(timed_prime_test(1000003));
-display(timed_prime_test(1000033));
-display(timed_prime_test(1000037));
+function start_prime_test(n, times, start_time) {
+    return fast_is_prime(n, times)
+          ? report_prime(get_time() - start_time)
+          : false;
+}
+
+function report_prime(elapsed_time) {
+    display(" *** ");
+    display(elapsed_time);
+    return true;
+}
+
+display(timed_prime_test(1009, 1));
+// display(timed_prime_test(1013, 50));
+// display(timed_prime_test(1019, 50));
+// display(timed_prime_test(10007, 50));
+// display(timed_prime_test(10009, 50));
+// display(timed_prime_test(10037, 50));
+// display(timed_prime_test(100003, 50));
+// display(timed_prime_test(100019, 50));
+// display(timed_prime_test(100043, 50));
+// display(timed_prime_test(1000003, 50));
+// display(timed_prime_test(1000033, 50));
+display(timed_prime_test(1000037, 1));
+
+// The time taken to evaluate to evaluate 1009 is 0ms while time taken to 
+// evaluate 1000037 is 1ms. With the limited data we currently have, 
+// we are unable to conclude that using fermat_test has logn growth.
