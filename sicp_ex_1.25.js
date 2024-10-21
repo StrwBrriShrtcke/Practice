@@ -72,7 +72,7 @@ display(fast_is_prime(97, 3));
 // When running Alicia's code, I found that in the case of evaluating whether 
 // a large number was prime, found that when the program was performing
 // the square function, the number had become so large that
-// the it had to be represented using bigint. This likely caused 
+// the it had to be represented using floating point. This likely caused 
 // inaccuracies when the program is evaluating the square function and 
 // evaluating %. Hence causing the Alicia's code to be inaccurate 
 // when evaluating whether a large number is prime.
