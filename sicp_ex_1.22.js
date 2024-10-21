@@ -73,7 +73,7 @@ display(search_for_prime(100, 105));//" 101, 103"
 
 // Function that calculates time taken to execute another function
 function time_function(f) {
-    const start_time = get_time()
+    const start_time = get_time();
     f();
     return get_time() - start_time;
 }
