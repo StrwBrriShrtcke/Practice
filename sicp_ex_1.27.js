@@ -39,7 +39,7 @@ function random(n) {
 function fermat_test(n) {
     function try_it(a) {
         return a === n || expmod(a, n, n) === a && try_it(a + 1);
-    }// expmod(a, n-1, n)
+    }// expmod(a, n-1, n) === 0
     return try_it(2);
 }
 
