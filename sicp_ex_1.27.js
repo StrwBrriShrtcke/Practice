@@ -6,11 +6,11 @@ function is_even(n) {
     return n % 2 === 0;
 }
 
-function expmod(base, exp, m) {
+function expmod(base, exp, m) { //()
     return exp === 0
            ? 1
            : is_even(exp)
-           ? square(expmod(base, exp / 2, m)) % m
+           ? square(expmod(base, exp / 2, m)) % m// if ecpmod === 1 or n - 1, return 0, else return its evaluation
            : (base * expmod(base, exp - 1, m)) % m;
 }
 
@@ -39,7 +39,7 @@ function random(n) {
 function fermat_test(n) {
     function try_it(a) {
         return a === n || expmod(a, n, n) === a && try_it(a + 1);
-    }
+    }// expmod(a, n-1, n)
     return try_it(2);
 }
 
