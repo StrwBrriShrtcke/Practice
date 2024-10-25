@@ -28,11 +28,11 @@ function test_all(n) {
 function display_test(n) {
     function iter(n, a) {
         return !miller_rabin_test(n, a)
-        ? display(stringify(n) + " failed the Miller-Rabin test when a is "
-        + stringify(a))
+        ? stringify(n) + " failed the Miller-Rabin test when a is "
+        + stringify(a)
         : a === n - 2
-        ? display(stringify(n) + " has passed the Miller-Rabin test for a"
-        + " range of 2 to " + stringify(n - 2)) 
+        ? stringify(n) + " has passed the Miller-Rabin test for a"
+        + " range of 2 to " + stringify(n - 2)
         : iter(n, a + 1);
     }
     return iter(n, 2);
