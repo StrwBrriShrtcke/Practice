@@ -36,10 +36,5 @@ function accumulate(combiner, null_value, term, a, next, b) {
 //display(accumulate((string, value) => string + value, "", stringify,
 //2, x => x + 2, 20));
 //100 - 1 - 2 - 3 -... - 10
-display(100 +
-accumulate((x, y) =>  x + y,
-0,
-x => - x,
-1,
-x => x + 1,
-10));
+display(accumulate((x, y) =>  x - y, 100, x => x, 1,
+x => x + 1, 10));
