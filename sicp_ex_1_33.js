@@ -25,16 +25,6 @@ function test_all(n) {
     return iter_test_all(2); 
 }
 
-display(test_all(4));
-
-// function accumulate(combiner, null_value, term, a, next, b) {
-//     function iter(a, accumulated_value) {
-//         return a > b
-//         ? accumulated_value
-//         : iter(next(a), combiner(accumulated_value, term(a)));
-//     }
-//     return iter(a, null_value);
-// }
 function filtered_accumulate(combiner, null_value, term, a, next, b, 
     filter) {
     function iter(a, accumulated_value) {
@@ -47,4 +37,4 @@ function filtered_accumulate(combiner, null_value, term, a, next, b,
     return iter(a, null_value);
 }
 
-display(filtered_accumulate((sum, value) => (sum *sum) + value, 0, x => x, 10, x => x + 1, 30, test_all));
+display(filtered_accumulate((sum, value) => sum  + (value * value), 0, x => x, 10, x => x + 1, 20, test_all));
