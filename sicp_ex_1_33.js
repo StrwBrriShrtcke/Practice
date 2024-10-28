@@ -47,4 +47,4 @@ function filtered_accumulate(combiner, null_value, term, a, next, b,
     return iter(a, null_value);
 }
 
-display(filtered_accumulate((sum, value) => sum + value, 0, x => x, 10, x => x + 1, 30, test_all));
+display(filtered_accumulate((sum, value) => (sum *sum) + value, 0, x => x, 10, x => x + 1, 30, test_all));
