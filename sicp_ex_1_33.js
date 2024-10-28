@@ -25,4 +25,26 @@ function test_all(n) {
     return iter_test_all(2); 
 }
 
-test_all(8);
+display(test_all(4));
+
+// function accumulate(combiner, null_value, term, a, next, b) {
+//     function iter(a, accumulated_value) {
+//         return a > b
+//         ? accumulated_value
+//         : iter(next(a), combiner(accumulated_value, term(a)));
+//     }
+//     return iter(a, null_value);
+// }
+function filtered_accumulate(combiner, null_value, term, a, next, b, 
+    filter) {
+    function iter(a, accumulated_value) {
+        return a > b
+        ? accumulated_value
+        : !filter(a)
+        ? iter(a + 1, accumulated_value)
+        : iter(next(a), combiner(accumulated_value, term(a)));
+    }
+    return iter(a, null_value);
+}
+
+display(filtered_accumulate((sum, value) => sum + value, 0, x => x, 10, x => x + 1, 30, test_all));
