@@ -104,7 +104,9 @@ const wrap_with_YX = wrap_with(wrap_with_X, "Y");
 display(wrap_with_YX("Love"));
 display(wrap_with_YX("ProShooter")); 
 
+// -------------------------------------------------------
 // A function that wraps a string with "xX<3example<3Xx"
+// -------------------------------------------------------
 
 function build_a_tag(string_builder, first_wrapper, second_wrapper) {
     return (string) => first_wrapper + string_builder(string) + 
