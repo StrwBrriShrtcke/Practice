@@ -102,5 +102,18 @@ display(wrap_with_X("sNiPer"));
 const wrap_with_YX = wrap_with(wrap_with_X, "Y");
 
 display(wrap_with_YX("Love"));
-display(wrap_with_YX("ProShooter"));
+display(wrap_with_YX("ProShooter")); 
+
+// A function that wraps a string with "xX<3example<3Xx"
+
+function build_a_tag(string_builder, first_wrapper, second_wrapper) {
+    return (string) => first_wrapper + string_builder(string) + 
+    second_wrapper;
+}
+
+const pro_gamer_tag = build_a_tag(identity, "xX<3", "<3Xx");
+
+pro_gamer_tag("hi"); // "xX<3hi<3Xx"
+pro_gamer_tag(""); // "xX<3<3Xx"
+pro_gamer_tag("example"); // "xX<3example<3Xx"
 
