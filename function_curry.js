@@ -102,4 +102,5 @@ display(wrap_with_X("sNiPer"));
 const wrap_with_YX = wrap_with(wrap_with_X, "Y");
 
 display(wrap_with_YX("Love"));
+display(wrap_with_YX("ProShooter"));
 
