@@ -116,3 +116,18 @@ display(pro_gamer_tag("hi")); // "xX<3hi<3Xx"
 display(pro_gamer_tag("")); // "xX<3<3Xx"
 display(pro_gamer_tag("example")); // "xX<3example<3Xx"
 
+// ---------------------------------------------------------
+// A funciton that wraps a string if predicate returns true
+//----------------------------------------------------------
+
+function wrap_if(string_builder, wrapper, predicate) {
+    return predicate 
+    ? (string) => wrapper + string_builder(string) + wrapper
+    :false;
+}
+
+function more_than_c(n) {
+    return n > 3;
+}
+
+//display(wrap_if("a", "~", ))
