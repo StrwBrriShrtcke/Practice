@@ -1,6 +1,31 @@
+// -------------------------------------------------------------
+// Function that counts the number of characters exponentially
+// -------------------------------------------------------------
 
+function length_of(s) {
+    function iter(counter) {
+        return  is_undefined(char_at(s, 1)) 
+        ? 0
+        :is_undefined(char_at(s, counter))
+        ? counter 
+        : iter(counter * counter);
+    }
+    return iter(2);
+}
 
-
+function true_length(s) {
+    function iter(counter) {
+        return is_undefined(char_at(s, counter))
+        ? counter 
+        : iter(counter + 1);
+    }
+    return iter(math_sqrt(length_of(s)));
+}
+display(true_length("hello"));
+display(true_length(""));
+display(true_length(" "));
+display(true_length("one two three four")); //18
+display(true_length("Lorem ipsum odor amet, consectetuer adipiscing elit. Commodo habitant vitae condimentum nisl nisi diam ornare. Litora in ex sodales hendrerit quis finibus maecenas dignissim. Gravida ad vel tempus vestibulum curabitur sollicitudin. Iaculis aliquam congue interdum ullamcorper mi massa inceptos. Amet egestas a, risus ultrices torquent himenaeos.Ad habitant porta finibus a praesent libero ullamcorper senectus. Litora nibh suspendisse aliquet hac parturient nec. Egestas nisi sollicitudin semper ipsum eget magna facilisis dignissim justo. Natoque velit sodales dolor donec a porta aliquet lacus. Venenatis nibh maecenas posuere pulvinar vestibulum dignissim purus. Pretium ullamcorper lectus fermentum nam justo, quam etiam nibh. Scelerisque curabitur ultricies ipsum sagittis viverra."));
 
 // function length1(s) {
 //     function iter(counter) {
@@ -13,28 +38,28 @@
 
 
 
-function length2(s) {
-    function iter10(counter) {
-        return is_undefined(char_at(s, counter))
-        ? counter 
-        : iter10(counter + 10);
-    }
-    function iter1(counter) {
-        return is_undefined(char_at(s, counter))
-        ? counter 
-        : iter1(counter + 1);
-    }
-    function iter(counter, step) {
-        return is_undefined(char_at(s, counter))
-        ? counter 
-        : iter(counter + step, step);
-    }
+// function length2(s) {
+//     function iter10(counter) {
+//         return is_undefined(char_at(s, counter))
+//         ? counter 
+//         : iter10(counter + 10);
+//     }
+//     function iter1(counter) {
+//         return is_undefined(char_at(s, counter))
+//         ? counter 
+//         : iter1(counter + 1);
+//     }
+//     function iter(counter, step) {
+//         return is_undefined(char_at(s, counter))
+//         ? counter 
+//         : iter(counter + step, step);
+//     }
     
     // return iter1(math_max(0, iter10(0) - 10));
-    const lower_bound = iter(0, 10) - 10;
-    const non_neg_lower_bound = math_max(0, lower_bound);
+    // const lower_bound = iter(0, 10) - 10;
+    // const non_neg_lower_bound = math_max(0, lower_bound);
     // return iter(math_max(0, iter(0, 10) - 10), 1);
-    return iter(lower_bound);
+    // return iter(lower_bound);
  
 
     // function iter1(counter) {
@@ -42,9 +67,9 @@ function length2(s) {
     //     return is_undefined(char_at(s, counter))
     //     ? counter
     //     : iter1(lowerbound - 1);
-    // }
+    //}
     
-}
+//}
 function max(a, b) {
     return a < b
     ? b
@@ -59,9 +84,9 @@ function min(a, b) {
 // display(length2("hello"));
 // display(length("cat"));
 // display(length("unicorn"));
-display(length2(""));
+// display(length2(""));
 // display(length2("asdasdfghjklfghjkl")); //18
-display(length2("Lorem ipsum odor amet, consectetuer adipiscing elit. Commodo habitant vitae condimentum nisl nisi diam ornare. Litora in ex sodales hendrerit quis finibus maecenas dignissim. Gravida ad vel tempus vestibulum curabitur sollicitudin. Iaculis aliquam congue interdum ullamcorper mi massa inceptos. Amet egestas a, risus ultrices torquent himenaeos.Ad habitant porta finibus a praesent libero ullamcorper senectus. Litora nibh suspendisse aliquet hac parturient nec. Egestas nisi sollicitudin semper ipsum eget magna facilisis dignissim justo. Natoque velit sodales dolor donec a porta aliquet lacus. Venenatis nibh maecenas posuere pulvinar vestibulum dignissim purus. Pretium ullamcorper lectus fermentum nam justo, quam etiam nibh. Scelerisque curabitur ultricies ipsum sagittis viverra."));
+display(true_length("Lorem ipsum odor amet, consectetuer adipiscing elit. Commodo habitant vitae condimentum nisl nisi diam ornare. Litora in ex sodales hendrerit quis finibus maecenas dignissim. Gravida ad vel tempus vestibulum curabitur sollicitudin. Iaculis aliquam congue interdum ullamcorper mi massa inceptos. Amet egestas a, risus ultrices torquent himenaeos.Ad habitant porta finibus a praesent libero ullamcorper senectus. Litora nibh suspendisse aliquet hac parturient nec. Egestas nisi sollicitudin semper ipsum eget magna facilisis dignissim justo. Natoque velit sodales dolor donec a porta aliquet lacus. Venenatis nibh maecenas posuere pulvinar vestibulum dignissim purus. Pretium ullamcorper lectus fermentum nam justo, quam etiam nibh. Scelerisque curabitur ultricies ipsum sagittis viverra."));
 
 
 // function factorial(n) {
