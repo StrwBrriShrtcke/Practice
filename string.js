@@ -4,7 +4,9 @@
 
 function estimate_length_of(s) {
     function iter(counter) {
-        return is_undefined(char_at(s, counter))
+        return is_undefined(char_at(s, 1))
+        ? 1
+        : is_undefined(char_at(s, counter))
         ? counter 
         : iter(counter * 2);
     }
@@ -17,13 +19,13 @@ function true_length(s) {
         ? counter 
         : iter(counter + 1);
     }
-    return iter(math_floor((estimate_length_of(s) / 2)));
+    return estimate_length_of(s) <= 1 ? iter(0) : iter(math_floor((estimate_length_of(s) / 2)));
 }
-display(true_length("hello"));
+//display(true_length("hello"));
 display(true_length(""));
 display(true_length(" "));
-display(true_length("one two three four")); //18
-display(true_length("Lorem ipsum odor amet, consectetuer adipiscing elit. Commodo habitant vitae condimentum nisl nisi diam ornare. Litora in ex sodales hendrerit quis finibus maecenas dignissim. Gravida ad vel tempus vestibulum curabitur sollicitudin. Iaculis aliquam congue interdum ullamcorper mi massa inceptos. Amet egestas a, risus ultrices torquent himenaeos.Ad habitant porta finibus a praesent libero ullamcorper senectus. Litora nibh suspendisse aliquet hac parturient nec. Egestas nisi sollicitudin semper ipsum eget magna facilisis dignissim justo. Natoque velit sodales dolor donec a porta aliquet lacus. Venenatis nibh maecenas posuere pulvinar vestibulum dignissim purus. Pretium ullamcorper lectus fermentum nam justo, quam etiam nibh. Scelerisque curabitur ultricies ipsum sagittis viverra.")); //786
+//display(true_length("one two three four")); //18
+//display(true_length("Lorem ipsum odor amet, consectetuer adipiscing elit. Commodo habitant vitae condimentum nisl nisi diam ornare. Litora in ex sodales hendrerit quis finibus maecenas dignissim. Gravida ad vel tempus vestibulum curabitur sollicitudin. Iaculis aliquam congue interdum ullamcorper mi massa inceptos. Amet egestas a, risus ultrices torquent himenaeos.Ad habitant porta finibus a praesent libero ullamcorper senectus. Litora nibh suspendisse aliquet hac parturient nec. Egestas nisi sollicitudin semper ipsum eget magna facilisis dignissim justo. Natoque velit sodales dolor donec a porta aliquet lacus. Venenatis nibh maecenas posuere pulvinar vestibulum dignissim purus. Pretium ullamcorper lectus fermentum nam justo, quam etiam nibh. Scelerisque curabitur ultricies ipsum sagittis viverra.")); //786
 
 // function length1(s) {
 //     function iter(counter) {
