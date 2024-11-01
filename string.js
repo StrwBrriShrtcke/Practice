@@ -1,16 +1,14 @@
-// -------------------------------------------------------------
-// Function that counts the number of characters exponentially
-// -------------------------------------------------------------
+// -----------------------------------------------------------------
+// Function estimates the number of characters first, then counts 
+// -----------------------------------------------------------------
 
 function estimate_length_of(s) {
     function iter(counter) {
-        return  is_undefined(char_at(s, 1)) 
-        ? 0
-        :is_undefined(char_at(s, counter))
+        return is_undefined(char_at(s, counter))
         ? counter 
-        : iter(counter * counter);
+        : iter(counter * 2);
     }
-    return iter(2);
+    return iter(1);
 }
 
 function true_length(s) {
@@ -19,7 +17,7 @@ function true_length(s) {
         ? counter 
         : iter(counter + 1);
     }
-    return iter(math_sqrt(estimate_length_of(s)));
+    return iter(math_floor((estimate_length_of(s) / 2)));
 }
 display(true_length("hello"));
 display(true_length(""));
