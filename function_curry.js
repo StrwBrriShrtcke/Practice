@@ -112,7 +112,7 @@ const wrap_with_heart = wrap_with(identity, "<3");
 const wrap_with_cap_x = wrap_with(wrap_with_heart, "X");
 const pro_gamer_tag = wrap_with(wrap_with_cap_x, "x");
 
-display(pro_gamer_tag("hi")); // "xX<3hi<3Xx"
+//display(pro_gamer_tag("hi")); // "xX<3hi<3Xx"
 //display(pro_gamer_tag("")); // "xX<3<3Xx"
 //display(pro_gamer_tag("example")); // "xX<3example<3Xx"
 
@@ -138,13 +138,14 @@ function true_length(s) {
     return iter(math_floor((estimate_length_of(s) / 2)));
 }
 
-function wrap_if(string_builder, wrapper, predicate, condition) {
-    return predicate(string_builder) <= condition
-    ? (string) => wrapper + string_builder(string) + wrapper
+function wrap_if(string_builder, wrapper, filter, condition) {
+    return filter(string_builder) <= condition
+    ? (string) => wrapper + string_builder + wrapper
     :"username exceeds character limit";
 }
 
 const wrap_identity = wrap_if(identity, "~", true_length, 20);
-const wrap_fancy = wrap_if("CreamyRoses", "~", true_length, 20);
+const wrap_x = wrap_if(wrap_identity, "x", true_length, 20);
 
-//display(wrap_if("a", "~", ))
+display(wrap_x("CreamyRoses"));
+
