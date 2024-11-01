@@ -3,15 +3,16 @@
 // -----------------------------------------------------------------
 
 function estimate_length_of(s) {
-    function iter(counter) {
+    function iter(counter, n, x) {
         //display(counter);
+        display(x);
         return is_undefined(char_at(s, 0))
         ? 0
-        : is_undefined(char_at(s, counter))
-        ? counter 
-        : iter((counter * 2) - 1);
+        : is_undefined(char_at(s, x))
+        ? x
+        : iter((counter * 2), n, counter - n);
     }
-    return iter(2);
+    return iter(2, 1, 0);
 }
 
 function true_length(s) {
