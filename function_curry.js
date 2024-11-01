@@ -8,16 +8,16 @@ function bmi(height, weight) {
     return weight / (height * height);
 }
 
-display(bmi(1.6, 40));
-display(bmi(1.6, 50));
-display(bmi(1.6, 60));
+//display(bmi(1.6, 40));
+//display(bmi(1.6, 50));
+//display(bmi(1.6, 60));
 
 
 const bmi_160cm = (weight) => bmi(1.6, weight);
 
-display(bmi_160cm(40));
-display(bmi_160cm(50));
-display(bmi_160cm(60));
+//display(bmi_160cm(40));
+//display(bmi_160cm(50));
+//display(bmi_160cm(60));
 
 // with function currying
 
@@ -32,19 +32,19 @@ function bmi_curry(height) {
     return (weight) => weight / (height * height);
 }
 
-display(bmi_curry(1.6)(60));
+//display(bmi_curry(1.6)(60));
 
 const bmi_160cm_curry = bmi_curry(1.6);
 
-display(bmi_160cm_curry(40));
-display(bmi_160cm_curry(50));
-display(bmi_160cm_curry(60));
+//display(bmi_160cm_curry(40));
+//display(bmi_160cm_curry(50));
+//display(bmi_160cm_curry(60));
 
 // ------------------------------------------
 // Animation with curve
 // ------------------------------------------
 
-display("Animation with curve");
+//display("Animation with curve");
 
 function lerp(start, end) {
     function animate(t) {
@@ -55,9 +55,9 @@ function lerp(start, end) {
 
 const my_lerp = lerp(50, 100);
 
-display(my_lerp(0));
-display(my_lerp(1));
-display(my_lerp(0.5));
+//display(my_lerp(0));
+//display(my_lerp(1));
+//display(my_lerp(0.5));
 
 function decelerate(start, end) {
     function animate(t) {
@@ -69,20 +69,20 @@ function decelerate(start, end) {
 
 const decelerate_from_4_to_20 = decelerate(4, 20);
 
-display(decelerate_from_4_to_20(0));
-display(decelerate_from_4_to_20(1));
-display(decelerate_from_4_to_20(0.5));
+//display(decelerate_from_4_to_20(0));
+//display(decelerate_from_4_to_20(1));
+//display(decelerate_from_4_to_20(0.5));
 
 // ------------------------------------------
 // String wrapping
 // ------------------------------------------
-display("String wrapping");
+//display("String wrapping");
 
 const identity = s => s;
 
 const no_wrap = identity;
 
-display(no_wrap("sNiPer"));
+//display(no_wrap("sNiPer"));
 
 // function wrap_with(string_builder, wrapper) {
 //     function wrapped_string_builder(string) {
@@ -97,12 +97,12 @@ function wrap_with(string_builder, wrapper) {
 
 const wrap_with_X = wrap_with(identity, "X");
 
-display(wrap_with_X("sNiPer"));
+//display(wrap_with_X("sNiPer"));
 
 const wrap_with_YX = wrap_with(wrap_with_X, "Y");
 
-display(wrap_with_YX("Love"));
-display(wrap_with_YX("ProShooter")); 
+//display(wrap_with_YX("Love"));
+//display(wrap_with_YX("ProShooter")); 
 
 // -------------------------------------------------------
 // A function that wraps a string with "xX<3example<3Xx"
@@ -113,21 +113,38 @@ const wrap_with_cap_x = wrap_with(wrap_with_heart, "X");
 const pro_gamer_tag = wrap_with(wrap_with_cap_x, "x");
 
 display(pro_gamer_tag("hi")); // "xX<3hi<3Xx"
-display(pro_gamer_tag("")); // "xX<3<3Xx"
-display(pro_gamer_tag("example")); // "xX<3example<3Xx"
+//display(pro_gamer_tag("")); // "xX<3<3Xx"
+//display(pro_gamer_tag("example")); // "xX<3example<3Xx"
 
 // ---------------------------------------------------------
 // A funciton that wraps a string if predicate returns true
 //----------------------------------------------------------
 
-function wrap_if(string_builder, wrapper, predicate) {
-    return predicate 
-    ? (string) => wrapper + string_builder(string) + wrapper
-    :false;
+function estimate_length_of(s) {
+    function iter(counter) {
+        return is_undefined(char_at(s, counter))
+        ? counter 
+        : iter(counter * 2);
+    }
+    return iter(1);
 }
 
-function more_than_c(n) {
-    return n > 3;
+function true_length(s) {
+    function iter(counter) {
+        return is_undefined(char_at(s, counter))
+        ? counter 
+        : iter(counter + 1);
+    }
+    return iter(math_floor((estimate_length_of(s) / 2)));
 }
+
+function wrap_if(string_builder, wrapper, predicate, condition) {
+    return predicate(string_builder) <= condition
+    ? (string) => wrapper + string_builder(string) + wrapper
+    :"username exceeds character limit";
+}
+
+const wrap_identity = wrap_if(identity, "~", true_length, 20);
+const wrap_fancy = wrap_if("CreamyRoses", "~", true_length, 20);
 
 //display(wrap_if("a", "~", ))
