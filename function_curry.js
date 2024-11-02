@@ -138,14 +138,46 @@ function true_length(s) {
     return iter(math_floor((estimate_length_of(s) / 2)));
 }
 
-function wrap_if(string_builder, wrapper, filter, condition) {
-    return filter(string_builder) <= condition
-    ? (string) => wrapper + string_builder + wrapper
-    :"username exceeds character limit";
+function wrap_if(string_builder, wrapper, filter) {
+    return (string) => filter(string) 
+    ? wrapper + string_builder(string) + wrapper
+    : string_builder(string);
 }
 
-const wrap_identity = wrap_if(identity, "~", true_length, 20);
-const wrap_x = wrap_if(wrap_identity, "x", true_length, 20);
+const wrap_identity = wrap_if(identity, "~", (s) => true_length(s) <= 5);
+const wrap_x = wrap_with(wrap_identity, "x");
 
-display(wrap_x("CreamyRoses"));
+// display(wrap_x("CreamyRoses"));
+
+// ------------------------------------------------------
+// Error handling through username creation
+// ------------------------------------------------------
+
+function try_to_apply(func, value) {
+    return is_undefined(value) ? undefined : func(value);
+}
+
+function filter(predicate, value) {
+    return predicate(value) ? value : undefined;
+}
+
+const filtered_wrap_x = (s) => {
+    const filtered_s = filter((s) => true_length(s) <= 20, s);
+    const wrapper = wrap_with(s => s, "~*:･");
+    return try_to_apply(wrapper, filtered_s);
+};
+
+
+// function filtered_wrap_x(s) {
+//     const filtered_s = filter((s) => true_length(s) <= 5, s);
+//     const wrapper = wrap_with(s => s, "~");
+//     return try_to_apply(wrapper, filtered_s);
+// }
+
+
+display(filtered_wrap_x("CreamyRoses"));
+
+
+
+
 
