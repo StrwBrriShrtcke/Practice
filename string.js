@@ -44,6 +44,7 @@ function word_count(string) {
     return space(0, 0);
 }
 display(word_count("Hi How Are You?"));
+display(word_counter("It's always good to bring a slower friend with you on a hike. If you happen to come across bears, the whole group doesn't have to worry. Only the slowest in the group do. That was the lesson they were about to learn that day."));
 
 // ----------------------------------------------------------------
 // Counting a string one character at a time
