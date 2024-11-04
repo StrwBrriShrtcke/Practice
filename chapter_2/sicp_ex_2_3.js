@@ -20,30 +20,32 @@ function midpoint(segment) {
     return make_point(mid_x, mid_y);
 }
 
-// calculating length and width
+// Function that represents triangle
 
-function  legnth(top_left, bottom_right) {
-    return start_segment(top_left) - start_segment(bottom_right);
+function rectangle(top_left, bottom_right) { 
+    return pair(top_left, bottom_right);
 }
 
-function width(top_left, bottom_right) {
-    return end_segment(bottom_right) - end_segment(top_left);
+// Calculating perimeter of rectangle in a plane
+
+function  perimeter(rectangle) {
+    const start = start_segment(rectangle);
+    const end = end_segment(rectangle);
+    const length = start_segment(start) - start_segment(end);
+    const width = end_segment(end) - end_segment(start);
+    return length * 2 + width * 2;
 }
 
-// calculating perimeter of rectangle in a plane
+display(perimeter(rectangle(make_point(2, 4), make_point(1, 8))));
 
-function perimeter(top_left, bottom_right) {
-    return legnth(top_left, bottom_right)  * 2 
-    + width(top_left, bottom_right) * 2;
-}
-display(perimeter(make_point(2, 4), make_point(1, 8)));
+// Calculating area of rectangle in a plane
 
-
-//calculating area of rectangle in a plane
-
-function area(top_left, bottom_right) {
-    return legnth(top_left, bottom_right) *
-    width(top_left, bottom_right);
+function area(rectangle) {
+    const start = start_segment(rectangle);
+    const end = end_segment(rectangle);
+    const length = start_segment(start) - start_segment(end);
+    const width = end_segment(end) - end_segment(start);
+    return length * width;
 }
 
-display(area(make_point(2, 4), make_point(1, 8)));
+display(area(rectangle(make_point(2, 4), make_point(1, 8))));
