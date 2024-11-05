@@ -22,73 +22,85 @@ function midpoint(segment) {
 
 // Function that represents triangle LTRB
 
-function rectangle_ltrb(top_left, bottom_right) { 
-    return pair(top_left, bottom_right);
+function make_rectangle_ltrb(top_left, bottom_right) { 
+    const rectangle = pair(top_left, bottom_right);
+    return pair("LTRB", rectangle);
 }
 
 // Calculating perimeter of rectangle in a plane LTRB
 
-function  perimeter_ltrb(rectangle_ltrb) {
-    const start = start_segment(rectangle_ltrb);
-    const end = end_segment(rectangle_ltrb);
+function  perimeter_ltrb(make_rectangle_ltrb) {
+    const start = start_segment(make_rectangle_ltrb);
+    const end = end_segment(make_rectangle_ltrb);
     const length = start_segment(start) - start_segment(end);
     const width = end_segment(end) - end_segment(start);
     return length * 2 + width * 2;
 }
 
-display(perimeter_ltrb(rectangle_ltrb(make_point(2, 4), make_point(1, 8))));
+//display(perimeter_ltrb(make_rectangle_ltrb(make_point(2, 4), make_point(1, 8))));
 
 // Calculating area of rectangle in a plane LTRB
 
-function area_ltrb(rectangle_ltrb) {
-    const start = start_segment(rectangle_ltrb);
-    const end = end_segment(rectangle_ltrb);
+function area_ltrb(make_rectangle_ltrb) {
+    const start = start_segment(make_rectangle_ltrb);
+    const end = end_segment(make_rectangle_ltrb);
     const length = start_segment(start) - start_segment(end);
     const width = end_segment(end) - end_segment(start);
     return length * width;
 }
 
-display(area_ltrb(rectangle_ltrb(make_point(2, 4), make_point(1, 8))));
+//display(area_ltrb(make_rectangle_ltrb(make_point(2, 4), make_point(1, 8))));
 
 
 // Function that represents rectangle using LTWH
 
-// function rectangle_ltwh(top_left, width, height) {
-//     return pair(top_left, pair(width, height));
-// }
+function make_rectangle_ltwh(top_left, width, height) {
+    const rectangle = pair(top_left, pair(width, height));
+    return pair("LTWH", rectangle);
+}
 
-display(rectangle_ltwh(make_point(3, 4), 2, 2));
+//display(make_rectangle_ltwh(make_point(3, 4), 2, 2));
 
 // Function for calculating area of rectangle using LTWH
 
-function area_ltwh(rectangle_ltwh) {
-    const start = start_segment(rectangle_ltwh);
-    const end = end_segment(rectangle_ltwh);
-    const height = end_segment(end);
-    const width = start_segment(end);
+function area_ltwh(make_rectangle_ltwh) {
+    const start = start_segment(make_rectangle_ltwh);
+    const end = end_segment(make_rectangle_ltwh);
+    const height = tail(end);
+    const width = head(end);
     return height * width; 
 }
 
-display(area_ltwh(rectangle_ltwh(make_point(3, 4), 2, 2)));
+//display(area_ltwh(make_rectangle_ltwh(make_point(3, 4), 2, 2)));
 
 // Function that calculated perimeter of rectangle using LTWH
 
-function perimeter_ltwh(rectangle_ltwh) {
-    const start = start_segment(rectangle_ltwh);
-    const end = end_segment(rectangle_ltwh);
-    const height = end_segment(end);
-    const width = start_segment(end);
+function perimeter_ltwh(make_rectangle_ltwh) {
+    const start = start_segment(make_rectangle_ltwh);
+    const end = end_segment(make_rectangle_ltwh);
+    const height = tail(end);
+    const width = head(end);
     return height * 2 + width * 2; 
 }
 
-display(perimeter_ltwh(rectangle_ltwh(make_point(3, 4), 2, 2)));
+//display(perimeter_ltwh(make_rectangle_ltwh(make_point(3, 4), 2, 2)));
 
 // Function that calculates area and perimeter using LTWH or LTRB
 // depending on which representation is being evaluated
 
-function check(rectangle) {
-    return rectangle_ltwh(rectangle) === undefined
-    ? perimeter_ltwh(rectangle_ltwh)
-    : 1;
+function area(rectangle) {
+    return head(rectangle) === "LTWH"
+    ? area_ltwh(tail(rectangle))
+    : area_ltrb(tail(rectangle));
 }
-check(rectangle_ltwh(make_point(3, 4), 2, 2)); 
+display(area(make_rectangle_ltwh(make_point(3, 4), 2, 4))); 
+display(area(make_rectangle_ltrb(make_point(3, 5), make_point(2, 8))));
+
+function perimeter(rectangle) {
+    return head(rectangle) === "LTWH"
+    ? perimeter_ltwh(tail(rectangle))
+    : perimeter_ltrb(tail(rectangle));
+}
+
+display(perimeter(make_rectangle_ltwh(make_point(3, 4), 2, 4))); 
+display(perimeter(make_rectangle_ltrb(make_point(3, 5), make_point(2, 8))));
