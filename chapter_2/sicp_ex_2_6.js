@@ -44,3 +44,18 @@ display(zero(ha)(""));
 display(one(ha)(""));
 display(two(ha)(""));
 display(three(ha)(""));
+
+// Multiplication
+
+function mul(a, b) {
+    return f => a(b(f));
+}
+mul(one, two);
+f => (f => x => f(x))((f => x => f(f(x)))(f));
+f => (f => x => f(x))(x => f(f(x)));
+f => (x => (x => f(f(x)))(x))
+f => x => f(f(x))
+
+mul(two, three);
+f => [f => x => f(f(x))]([f => x => f(f(f(x)))](f))
+f => [f => x => f(f(x))]
