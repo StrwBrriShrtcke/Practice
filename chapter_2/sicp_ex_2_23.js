@@ -11,4 +11,13 @@ function map(fun, items) {
                   map(fun, tail(items)));
 }
 
-for_each(x => display(x), list(57, 321, 88));
+function for_each_imp(fun, items) {
+    function iter(element, remaining) {
+        return is_null(remaining)
+        ? 1
+        : iter(fun(head(remaining)), tail(remaining));
+    }
+    return iter(1, items);
+}
+
+display(for_each_imp(x => display(x), list(57, 321, 88)));
