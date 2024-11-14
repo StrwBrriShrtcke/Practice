@@ -36,11 +36,8 @@ function square_list_2(items) {
 
 square_list_2(list(1, 2, 3, 4));
 
-// In line 34, answer is already said to be 'null'. As such in lines
-// 31 and 32, the 'head' of the pair, which does not change throughout
-// the evaluation of this funtion, is 'null.' As such even though this
-// function appears to have fixed the reveral issue in Louis's first 
-// code, he has uncovered another issue where 'null' will become the 
-// first element of his list.
+// In the above function, square_list evaluates to 
+// [[[[null, 1], 4], 9], 16]. Since it is neither an empty list nor is 
+// its tail a list, it can no longer be considered a list. 
 
 
