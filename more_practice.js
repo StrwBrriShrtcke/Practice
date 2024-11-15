@@ -17,7 +17,7 @@ function sum_list_iter(numbers) {
     }
     return iter(0, numbers);
 }
-    
+
 sum_list_iter(list(1, 2, 3, 4));
 
 
@@ -135,18 +135,26 @@ sum_odds(list(1, 2, 3, 4, 5, 6, 7));
 // a function greates_length that returns the longest string in a list of 
 // strings
 
+function length_of(a_string) {
+    function iter(test_string, counter) {
+        return is_undefined(char_at(test_string, counter))
+        ? counter
+        : iter(test_string, counter + 1);
+    }
+    return iter(a_string, 0);
+}
+
 function greater_than(a, b) {
-    return a > b
+    return length_of(a) > length_of(b)
     ? a
     : b;
 }
 
 function greatest_length(a_list) {
-     return reduce(0, greater_than, map(length, a_list));
+    return reduce("", greater_than, a_list);
 }
 
- greatest_length(list("hello", "bye", "no"));
-
+greatest_length(list("hello", "bye", "no", "rainbow"));
 
 
 
